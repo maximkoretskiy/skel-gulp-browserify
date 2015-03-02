@@ -9,7 +9,7 @@ settings = {
 
 
 path = {
-  app: "app"
+  app: -> "./app"
   build: (mode = settings.mode)->
     if mode is "build" then "./dist/"
     else "./.tmp"
