@@ -5,17 +5,24 @@ watchify = require "watchify"
 coffeeify = require "coffeeify"
 source = require "vinyl-source-stream"
 
-settings = require "../settings"
+s = require "../settings"
 
 b = browserify
-  entries: settings.path.scripts()
-b = watchify b if settings.mode is "dev"
+  entries: s.path.scripts()
 b.transform coffeeify
 
-module.exports = ->
+runBundle = (b)->
   b.bundle()
   .on 'error', (err) ->
     console.log err.toString()
     @emit("end");
-  .pipe source settings.path.scripts "dest_file"
-  .pipe gulp.dest settings.path.scripts "dest_dir"
+  .pipe source s.path.scripts "dest_file"
+  .pipe gulp.dest s.path.scripts "dest_dir"
+
+if s.mode is "dev"
+  b = watchify b
+  b.on 'update', -> runBundle b
+
+module.exports = ->
+  runBundle b
+
