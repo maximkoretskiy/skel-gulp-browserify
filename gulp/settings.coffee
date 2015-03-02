@@ -21,10 +21,13 @@ settings.path = {
     switch opt
       when "dest_file" then "app.coffee"
       when "dest_dir" then libPath.join path.build(), "/scripts/"
-      else "./app/scripts/app.coffee"
+      else "./" + libPath.join path.app(), "/scripts/app.coffee"
+  styles: (opt)->
+    switch opt
+      when "dest" then libPath.join path.build(), "/styles/"
+      when "src" then libPath.join path.app(), "/styles/"
+      else libPath.join path.app(), "/styles/main.sass"
 }
-
-
 
 module.exports = settings
 
