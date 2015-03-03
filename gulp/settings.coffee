@@ -19,7 +19,7 @@ settings.path = {
   clean: ()-> path.build()
   scripts: (opt)->
     switch opt
-      when "dest_file" then "app.coffee"
+      when "dest_file" then "app.js"
       when "dest_dir" then libPath.join path.build(), "/scripts/"
       else "./" + libPath.join path.app(), "/scripts/app.coffee"
   styles: (opt)->

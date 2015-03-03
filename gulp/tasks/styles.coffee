@@ -7,6 +7,7 @@ csswring = require "csswring"
 browserSync = require "browser-sync"
 
 s = require "../settings"
+common = require "../common"
 
 module.exports = ->
   processors = [
@@ -16,6 +17,9 @@ module.exports = ->
   ]
   gulp.src s.path.styles()
     .pipe sass(indentedSyntax: true)
+    .on 'error', common.errorHandler "SASS"
+    # .on 'error', common.errorNotifier
     .pipe(postcss(processors))
+    .on 'error', common.errorHandler "CSS"
     .pipe gulp.dest s.path.styles "dest"
     .pipe browserSync.reload {stream: true}

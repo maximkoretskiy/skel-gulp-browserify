@@ -7,6 +7,7 @@ source = require "vinyl-source-stream"
 browserSync = require "browser-sync"
 
 s = require "../settings"
+common = require "../common"
 
 b = browserify
   entries: s.path.scripts()
@@ -14,9 +15,7 @@ b.transform coffeeify
 
 runBundle = (b)->
   b.bundle()
-  .on 'error', (err) ->
-    console.log err.toString()
-    @emit("end")
+  .on 'error', common.errorHandler "Scripts"
   .pipe source s.path.scripts "dest_file"
   .pipe gulp.dest s.path.scripts "dest_dir"
   .pipe browserSync.reload {stream: true}
