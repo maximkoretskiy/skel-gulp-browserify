@@ -25,8 +25,15 @@ settings.path = {
   styles: (opt)->
     switch opt
       when "dest" then libPath.join path.build(), "/styles/"
-      when "src" then libPath.join path.app(), "/styles/"
+      when "src" then libPath.join path.app(), "/styles/**/*.sass"
       else libPath.join path.app(), "/styles/main.sass"
+  serve: ->
+    result = [path.build()]
+    result.push path.app() if settings.mode is 'dev'
+    result
+  html: ->
+    libPath.join path.app(), "/*.html"
+
 }
 
 module.exports = settings
