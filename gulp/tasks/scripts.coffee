@@ -3,6 +3,7 @@ gutil = require "gulp-util"
 browserify = require "browserify"
 watchify = require "watchify"
 coffeeify = require "coffeeify"
+coffeeReactify = require "coffee-reactify"
 source = require "vinyl-source-stream"
 browserSync = require "browser-sync"
 
@@ -11,7 +12,7 @@ common = require "../common"
 
 b = browserify
   entries: s.path.scripts()
-b.transform coffeeify
+b.transform coffeeReactify
 
 runBundle = (b)->
   b.bundle()

@@ -1,3 +1,6 @@
-# require('./test.coffee')
-console.log "dsadsa"
+React = require('react')
+Timer = require('./ui/Timer.coffee')
+
+
+React.renderComponent(<Timer />, document.body)
 # ///

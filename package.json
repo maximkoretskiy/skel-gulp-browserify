@@ -34,11 +34,15 @@
   },
   "dependencies": {
     "localforage": "^1.2.2",
-    "promise": "^6.1.0"
+    "promise": "^6.1.0",
+    "react": "^0.12.2"
   },
   "jest": {
     "rootDir": "app/scripts",
     "scriptPreprocessor": "../../jest-preprocessor.js",
-    "testFileExtensions": ["coffee", "js"]
+    "testFileExtensions": [
+      "coffee",
+      "js"
+    ]
   }
 }
