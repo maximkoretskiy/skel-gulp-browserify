@@ -1,5 +1,5 @@
-jest.dontMock('../test')
-test = require "../test"
+jest.dontMock('../test.coffee')
+test = require "../test.coffee"
 
 describe "test", ->
   it "returns false when passed true", ->

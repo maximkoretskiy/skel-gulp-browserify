@@ -1,1 +1,2 @@
-module.exports = (value)-> not value
+module.exports = (value)->
+  not value
