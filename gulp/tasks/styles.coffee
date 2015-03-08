@@ -1,5 +1,6 @@
 gulp = require "gulp"
 sass = require "gulp-sass"
+concat = require "gulp-concat"
 postcss = require "gulp-postcss"
 autoprefixer = require "autoprefixer-core"
 mqpacker = require "css-mqpacker"
@@ -16,6 +17,7 @@ module.exports = ->
     csswring
   ]
   gulp.src s.path.styles()
+    .pipe concat('main.sass')
     .pipe sass(indentedSyntax: true)
     .on 'error', common.errorHandler "SASS"
     # .on 'error', common.errorNotifier

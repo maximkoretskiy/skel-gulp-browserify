@@ -26,8 +26,14 @@ settings.path = {
   styles: (opt)->
     switch opt
       when "dest" then libPath.join path.build(), "/styles/"
-      when "src" then libPath.join path.app(), "/styles/**/*.sass"
-      else libPath.join path.app(), "/styles/main.sass"
+      when "src" then [
+        libPath.join path.app(), "/styles/**/*.sass"
+        libPath.join path.app(), "/scripts/ui/**/*.sass"
+      ]
+      else [
+        libPath.join path.app(), "/styles/main.sass"
+        libPath.join path.app(), "/scripts/ui/**/*.sass"
+      ]
 
   jest: ->
     # libPath.join path.app(),  "/scripts/**/__tests__"

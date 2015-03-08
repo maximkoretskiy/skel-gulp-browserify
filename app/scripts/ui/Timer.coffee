@@ -16,7 +16,7 @@ Timer = React.createClass(
     return
 
   render: ->
-    return <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
+    return <div className='timer'>Seconds Elapsed: {this.state.secondsElapsed}</div>
 
 )
 module.exports = Timer
